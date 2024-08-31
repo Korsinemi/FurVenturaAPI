@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import animalController from '../controllers/animalController.js';
+import authMiddleware from '../middlewares/authMid.js';
 const router = Router();
 
 router.get('/', animalController.getAnimals);

@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 import gameRoutes from './routes/gameRoutes.js';
 import animalRoutes from './routes/animalRoutes.js'
 import eventRoutes from './routes/eventRoutes.js';
+import authRoutes from './routes/authRoutes.js'
 import packageJson from './package.json' assert { type: 'json' };
 
 const app = express();
@@ -29,6 +30,7 @@ app.use(cookieparser());
 app.use('/api/game', gameRoutes);
 app.use('/api/animals', animalRoutes)
 app.use('/api/events', eventRoutes)
+app.use('/api/auth', authRoutes)
 
 app.get('/', (req, res) => {
     res.send('Bienvenido a FurVentura API');

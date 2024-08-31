@@ -10,13 +10,13 @@ const getEvents = async (req, res) => {
 };
 
 const createEvent = async (req, res) => {
-    const { icon, name, type, rewards, participants, duration, status } = req.body;
+    const { icon, name, /* type, */ rewards, participants, duration, status } = req.body;
 
     try {
         const lastEvent = await Event.findOne().sort({ id: -1 });
         const newId = lastEvent ? lastEvent.id + 1 : 1;
 
-        const newEvent = new Event({ id: newId, icon, name, type, rewards, participants, duration, status });
+        const newEvent = new Event({ id: newId, icon, name, /* type, */ rewards, participants, duration, status });
         await newEvent.save();
         res.status(201).json(newEvent);
     } catch (error) {
@@ -26,12 +26,12 @@ const createEvent = async (req, res) => {
 
 const updateEvent = async (req, res) => {
     const { id } = req.params;
-    const { icon, name, type, rewards, participants, duration, status } = req.body;
+    const { icon, name, /* type, */ rewards, participants, duration, status } = req.body;
 
-    console.log('Datos recibidos para actualizar:', { id, icon, name, type, rewards, participants, duration, status });
+    console.log('Datos recibidos para actualizar:', { id, icon, name, /* type, */ rewards, participants, duration, status });
 
     try {
-        const updatedEvent = await Event.findOneAndUpdate({ id }, { icon, name, type, rewards, participants, duration, status }, { new: true });
+        const updatedEvent = await Event.findOneAndUpdate({ id }, { icon, name, /* type, */ rewards, participants, duration, status }, { new: true });
         if (!updatedEvent) return res.status(404).json({ message: 'Event not found' });
         res.status(200).json(updatedEvent);
     } catch (error) {

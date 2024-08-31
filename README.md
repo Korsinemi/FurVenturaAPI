@@ -4,6 +4,35 @@ La base de datos de [FurVentura](https://github.com/Korsinemi/FurVenturaSite)
 
 ## Changelog
 
+¡Claro! Parece que estás haciendo un gran progreso en tu proyecto. Vamos a crear una nueva versión basada en tus indicaciones:
+
+---
+
+### v1.2.0 - 2024-09-03
+
+> **General**
+- Se han realizado varias mejoras en la estructura y seguridad del código.
+- Se ha actualizado la documentación para reflejar los cambios.
+
+> **Autenticación y Seguridad**
+- Se ha implementado un sistema de autenticación robusto utilizando JSON Web Tokens (JWT) y bcrypt.
+  - Los usuarios ahora pueden registrarse, iniciar sesión y recibir tokens de acceso.
+  - Se ha creado un middleware para verificar la autenticidad de las solicitudes.
+- Se ha añadido una capa de seguridad adicional para proteger las rutas sensibles.
+
+> **Deprecaciones**
+- **Type de Events**: Se ha marcado como deprecado y se eliminará completamente en futuras versiones.
+- **GameRoutes y CharacterControllers**: Estos módulos también se han marcado como deprecados. Se está realizando la transición hacia UserRoutes y UserControllers.
+
+> **Corrección de Rutas**
+- Se han solucionado problemas de conexión en algunas rutas que no funcionaban correctamente.
+- Se ha mejorado la coherencia en la estructura de las rutas.
+
+> **Módulos Nuevos**
+- **Logros (Arch)**: Se ha iniciado la creación del módulo de logros. Los usuarios podrán desbloquear logros y recibir recompensas.
+- **Inventario (Inventory)**: Se ha creado el esqueleto del módulo de inventario. Los usuarios podrán gestionar sus objetos y recursos.
+
+
 ### v1.1.0 - 2024-08-27
 
 > **General**

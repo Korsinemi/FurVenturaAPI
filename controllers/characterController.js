@@ -1,4 +1,16 @@
 import Character from '../models/characterModel.js';
+import User from '../models/userModel.js';
+
+/* Proximamente
+const getUsers = async (req, res) => {
+    try {
+        const users = await User.find({}, 'username');
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: 'Error del servidor al obtener la lista de usuarios' });
+    }
+}
+*/
 
 const getCharacters = async (req, res) => {
     try {

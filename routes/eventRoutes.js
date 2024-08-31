@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import eventController from '../controllers/eventController.js';
+import authMiddleware from '../middlewares/authMid.js';
 const router = Router();
 
 router.get('/', eventController.getEvents);
