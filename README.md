@@ -4,8 +4,6 @@ La base de datos de [FurVentura](https://github.com/Korsinemi/FurVenturaSite)
 
 ## Changelog
 
-¡Claro! Parece que estás haciendo un gran progreso en tu proyecto. Vamos a crear una nueva versión basada en tus indicaciones:
-
 ### v1.3.0 - 2024-09-03
 
 > **General**
