@@ -25,7 +25,7 @@ const port = process.env.PORT || 5000;
 const corsConfig = {
     origin: "*",
     credential: true,
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"]
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE", "OPTIONS"]
 }
 app.use(morgan('dev'))
 app.options("", cors(corsConfig))
