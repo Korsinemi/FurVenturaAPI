@@ -26,6 +26,8 @@ const createAnimal = async (req, res) => {
         const lastAnimal = await Animal.findOne().sort({ id: -1 });
         const newId = lastAnimal ? lastAnimal.id + 1 : 1;
 
+        console.log('Datos recibidos para añadir:', { name, species, rarity, class: animalClass, imageUrl });
+
         const newAnimal = new Animal({ id: newId, name, species, rarity, class: animalClass, imageUrl });
         await newAnimal.save();
         res.status(201).json(newAnimal);

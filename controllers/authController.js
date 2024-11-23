@@ -12,7 +12,7 @@ const registerSchema = joi.object({
 export async function register(req, res) {
     const { error } = registerSchema.validate(req.body);
     if (error) {
-        console.log(error)
+        console.error('Validation Error:', error.details[0].message);
         return res.status(400).json({ error: error.details[0].message });
     }
 
@@ -20,17 +20,22 @@ export async function register(req, res) {
 
     try {
         let user = await User.findOne({ email });
-        if (user) return res.status(400).json({ error: 'El usuario ya existe' });
+        if (user) {
+            console.error('User Exists:', email);
+            return res.status(400).json({ error: 'El usuario ya existe' });
+        }
 
         user = new User({
             username,
             email,
-            password: await bcrypt.hash(password, 10)
+            password: await bcrypt.hash(password, 10),
+            role: 'user' // Asignar el rol de 'user' por defecto
         });
 
         await user.save();
         res.status(201).json({ msg: 'Usuario registrado exitosamente' });
     } catch (error) {
+        console.error('Server Error:', error);
         res.status(500).json({ error: 'Error del servidor' });
     }
 }
@@ -53,14 +58,13 @@ export async function login(req, res) {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ error: 'Credenciales inválidas' });
 
-        const token = jwt.sign({ userId: user._id }, 'your_jwt_secret', { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user._id, role: user.role }, 'your_jwt_secret', { expiresIn: '1h' });
 
-        res.status(200).json({ msg: 'Inicio de sesión exitoso', token });
+        res.status(200).json({ msg: 'Inicio de sesión exitoso', user: user.username, token, role: user.role });
     } catch (error) {
         res.status(500).json({ error: 'Error del servidor' });
     }
 }
-
 
 const updateUserSchema = joi.object({
     username: joi.string().min(3).max(50),

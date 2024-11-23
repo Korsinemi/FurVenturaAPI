@@ -4,7 +4,29 @@ La base de datos de [FurVentura](https://github.com/Korsinemi/FurVenturaSite)
 
 ## Changelog
 
-¡Claro! Parece que estás haciendo un gran progreso en tu proyecto. Vamos a crear una nueva versión basada en tus indicaciones:
+### v1.4.0 - 2024-11-23
+
+> **General**
+- Character ha sido deprected totalmente, y se trabaja en combinar sus funciones con el nuevo endpoint Users.
+- La ruta Game se modificó a Users, debido a que Game tendrá otros endpoints a futuro.
+- Se actualizaron todas las librerías y se añadieron los `@types` a algunas para mejor manejo.
+- Se actualizaron varios componentes.
+
+> **Autenticación y Seguridad**
+- Se acopló el middleware usando una ruta protegida para la verificación del token.
+- Se arregló un problema de manejo de solicitudes con el middleware.
+- Se mejoró la seguridad agregando mejor encriptación a los datos.
+- Se corrigió el error de verificación de token cuando el usuario se registraba.
+- Ahora también se puede obtener el nombre de usuario en el middleware de verificación, así como el rol.
+- Se agregó la función de verificación de roles.
+- Se está trabajando en user constantemente para acoplar los endpoints de item y achievements, para crear el inventario y perfil de usuario.
+
+> **Endpoints Nuevos**
+- Se agregaron nuevos endpoints: item, inventory y achievement, así como sus models y controladores.
+- Se agregó un nuevo middleware para items (aún en desarrollo).
+
+> **Mejoras en la API**
+- Se mejoró la velocidad de la API utilizando un mejor manejo de solicitudes.
 
 ### v1.3.0 - 2024-09-03
 
@@ -75,3 +97,6 @@ La base de datos de [FurVentura](https://github.com/Korsinemi/FurVenturaSite)
 
 Creado con amor por Korsinemi
 - Proyecto final ADSO SENA 2024
+
+
+
