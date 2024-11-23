@@ -3,7 +3,6 @@
 La base de datos de [FurVentura](https://github.com/Korsinemi/FurVenturaSite)
 
 ## Changelog
-
 ### v1.4.0 - 2024-11-23
 
 > **General**
@@ -97,6 +96,3 @@ La base de datos de [FurVentura](https://github.com/Korsinemi/FurVenturaSite)
 
 Creado con amor por Korsinemi
 - Proyecto final ADSO SENA 2024
-
-
-
