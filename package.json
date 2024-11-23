@@ -2,10 +2,10 @@
     "name": "furventura-api",
     "version": "1.4.0",
     "description": "Los datos de FurVentura",
-    "main": "app.js",
+    "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "node app.js"
+        "start": "node index.js"
     },
     "repository": {
         "type": "git",
