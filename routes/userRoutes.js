@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { authMiddleware } from '../middlewares/authMid.js';
+import { authMiddleware, authenticateRole } from '../middlewares/authMid.js';
 import userController from '../controllers/userController.js';
 const router = Router();
 
@@ -7,6 +7,9 @@ const router = Router();
 router.get('/', userController.getUsers);
 router.get('/:id', userController.getUserById);
 router.delete('/:id', authMiddleware, userController.deleteUser);
+router.put('/update/:id', authMiddleware, userController.updateUser);
+
+export default router;
 
 /*
 // Rutas para el inventario del usuario
@@ -28,5 +31,3 @@ router.post('/', userController.createuser);
 router.put('/:id', userController.updateuser);
 router.delete('/:id', userController.deleteuser);
 */
-
-export default router;

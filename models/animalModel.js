@@ -1,6 +1,10 @@
 import { Schema, model } from 'mongoose';
 
 const animalSchema = new Schema({
+    imageUrl: {
+        type: String,
+        required: true
+    },
     id: {
         type: Number,
         required: true
@@ -18,10 +22,6 @@ const animalSchema = new Schema({
         required: true
     },
     class: {
-        type: String,
-        required: true
-    },
-    imageUrl: {
         type: String,
         required: true
     }

@@ -20,15 +20,15 @@ const getAchievementById = async (req, res) => {
 };
 
 const createAchievement = async (req, res) => {
-    const { icon, title, description, dateAchieved, points } = req.body;
+    const { icon, name, description, dateAchieved, points } = req.body;
 
     try {
         const lastAchievement = await Achievement.findOne().sort({ id: -1 });
         const newId = lastAchievement ? lastAchievement.id + 1 : 1;
 
-        console.log('Datos recibidos para añadir:', { icon, title, description, dateAchieved, points });
+        console.log('Datos recibidos para añadir:', { icon, name, description, dateAchieved, points });
 
-        const newAchievement = new Achievement({ id: newId, icon, title, description, dateAchieved, points });
+        const newAchievement = new Achievement({ id: newId, icon, name, description, dateAchieved, points });
         await newAchievement.save();
         res.status(201).json(newAchievement);
     } catch (error) {
@@ -38,12 +38,12 @@ const createAchievement = async (req, res) => {
 
 const updateAchievement = async (req, res) => {
     const { id } = req.params;
-    const { icon, title, description, dateAchieved, points } = req.body;
+    const { icon, name, description, dateAchieved, points } = req.body;
 
-    console.log('Datos recibidos para actualizar:', { id, icon, title, description, dateAchieved, points });
+    console.log('Datos recibidos para actualizar:', { id, icon, name, description, dateAchieved, points });
 
     try {
-        const updatedAchievement = await Achievement.findOneAndUpdate({ id }, { title, icon, description, dateAchieved, points }, { new: true });
+        const updatedAchievement = await Achievement.findOneAndUpdate({ id }, { name, icon, description, dateAchieved, points }, { new: true });
         if (!updatedAchievement) return res.status(404).json({ message: 'Achievement not found' });
         res.status(200).json(updatedAchievement);
     } catch (error) {

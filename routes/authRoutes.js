@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { register, login, updateUser } from '../controllers/authController.js'
+import { register, login } from '../controllers/authController.js'
 import { authMiddleware, authenticateRole } from '../middlewares/authMid.js';
 const router = Router();
 
@@ -13,7 +13,5 @@ router.get('/protected', authMiddleware, (req, res) => {
 router.get('/admin', authMiddleware, authenticateRole('admin'), (req, res) => {
     res.status(200).json({ mensaje: 'Accediste como administrador', user: req.user });
 });
-
-router.put('/update', authMiddleware, updateUser);
 
 export default router;

@@ -20,15 +20,15 @@ const getAnimalById = async (req, res) => {
 };
 
 const createAnimal = async (req, res) => {
-    const { name, species, rarity, class: animalClass, imageUrl } = req.body;
+    const { imageUrl, name, species, rarity, class: animalClass } = req.body;
 
     try {
         const lastAnimal = await Animal.findOne().sort({ id: -1 });
         const newId = lastAnimal ? lastAnimal.id + 1 : 1;
 
-        console.log('Datos recibidos para añadir:', { name, species, rarity, class: animalClass, imageUrl });
+        console.log('Datos recibidos para añadir:', { imageUrl, name, species, rarity, class: animalClass });
 
-        const newAnimal = new Animal({ id: newId, name, species, rarity, class: animalClass, imageUrl });
+        const newAnimal = new Animal({ id: newId, imageUrl, name, species, rarity, class: animalClass });
         await newAnimal.save();
         res.status(201).json(newAnimal);
     } catch (error) {
@@ -38,12 +38,12 @@ const createAnimal = async (req, res) => {
 
 const updateAnimal = async (req, res) => {
     const { id } = req.params;
-    const { name, species, rarity, class: animalClass, imageUrl } = req.body;
+    const { imageUrl, name, species, rarity, class: animalClass } = req.body;
 
-    console.log('Datos recibidos para actualizar:', { id, name, species, rarity, class: animalClass, imageUrl });
+    console.log('Datos recibidos para actualizar:', { id, imageUrl, name, species, rarity, class: animalClass });
 
     try {
-        const updatedAnimal = await Animal.findOneAndUpdate({ id }, { name, species, rarity, class: animalClass, imageUrl }, { new: true });
+        const updatedAnimal = await Animal.findOneAndUpdate({ id }, { imageUrl, name, species, rarity, class: animalClass }, { new: true });
         if (!updatedAnimal) return res.status(404).json({ message: 'Animal not found' });
         res.status(200).json(updatedAnimal);
     } catch (error) {

@@ -21,7 +21,7 @@ const UserSchema = new Schema({
     role: {
         type: String,
         enum: ['user', 'admin', 'mod'],
-        default: 'usuario'
+        default: 'user'
     }
     /*,
     connections: {

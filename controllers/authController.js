@@ -65,29 +65,3 @@ export async function login(req, res) {
         res.status(500).json({ error: 'Error del servidor' });
     }
 }
-
-const updateUserSchema = joi.object({
-    username: joi.string().min(3).max(50),
-    email: joi.string().email(),
-    password: joi.string().min(6)
-});
-
-export async function updateUser(req, res) {
-    const { error } = updateUserSchema.validate(req.body);
-    if (error) return res.status(400).json({ error: error.details[0].message });
-
-    const updates = req.body;
-
-    try {
-        if (updates.password) {
-            updates.password = await bcrypt.hash(updates.password, 10);
-        }
-
-        const user = await User.findByIdAndUpdate(req.user.userId, updates, { new: true });
-        if (!user) return res.status(404).json({ error: 'Usuario no encontrado' });
-
-        res.status(200).json({ msg: 'Datos del usuario actualizados exitosamente', user });
-    } catch (error) {
-        res.status(500).json({ error: 'Error del servidor' });
-    }
-}
